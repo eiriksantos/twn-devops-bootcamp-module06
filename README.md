@@ -1,6 +1,8 @@
 # twn-devops-bootcamp-module06
 Artifact Repository Manager with Nexus
 
+## Publish Artifact to Repository
+
 ### Provision a Droplet for Nexus
 
 ### Install Nexus on the Droplet
@@ -69,3 +71,35 @@ $ cat /opt/sonatype-work/nexus3/admin.password
     ```
     $ mvn deploy
     ```
+
+## Nexus REST API
+
+### Query the repositories
+```
+# Using ejcs user
+❯ curl -u ejcs:nexus -X GET 'http://146.190.80.152:8081/service/rest/v1/repositories'
+[ {
+  "name" : "maven-snapshots",
+  "format" : "maven2",
+  "type" : "hosted",
+  "url" : "http://146.190.80.152:8081/repository/maven-snapshots",
+  "attributes" : { }
+} ]%  
+
+# Using admin user
+❯ curl -u admin:nexus -X GET 'http://146.190.80.152:8081/service/rest/v1/repositories'
+[ {
+  "name" : "nuget-hosted",
+  "format" : "nuget",
+  "type" : "hosted",
+  "url" : "http://146.190.80.152:8081/repository/nuget-hosted",
+  "attributes" : { }
+},
+...output omitted...                                                                        
+```
+
+### Query for components inside the repository
+```
+$ curl -u ejcs:nexus -X GET 'http://IP_ADDRESS:8081/service/rest/v1/components?repository=maven-snapshots'
+```
+
