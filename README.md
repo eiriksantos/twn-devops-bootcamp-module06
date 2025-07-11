@@ -103,3 +103,10 @@ $ cat /opt/sonatype-work/nexus3/admin.password
 $ curl -u ejcs:nexus -X GET 'http://IP_ADDRESS:8081/service/rest/v1/components?repository=maven-snapshots'
 ```
 
+### Query for specific ID
+```
+$ curl -u ejcs:nexus -X GET 'http://IP_ADDRESS:8081/service/rest/v1/components/IDXKJIKJAKJSKJDKAKJS'
+```
+
+## Blob Store
+
